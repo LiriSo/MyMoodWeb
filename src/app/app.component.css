@@ -34,8 +34,8 @@
   background-color: #2d3c45;
   color: white;
   position: fixed;
-  width: 20%;
   height: 50%;
+  overflow-y:scroll;
   bottom: 0px;
   text-align: center;
   padding: 10px;

@@ -36,18 +36,17 @@
 
 
 #ban-img {
-  height: 200px;
-  width: 400px;
+  width: 100%;
 }
 
 #bannerHead {
   margin-top:100px;
-  font-size: 80px;
+  font-size: 3em;
   direction: rtl;
 }
 
 #bannerHeadSub {
-  font-size: 85px;
+  font-size: 3.5em;
   margin-bottom:160px;
   direction: rtl;
 }
@@ -66,7 +65,7 @@
 	font-weight: bold;
 	height: 100px;
 	font-size: 4em;
-  padding-top: 5%;
+  padding-top: 35px;
 	color: #2471A3;
 	text-shadow: 0px 0px 5px white;
 	background-position: center;
@@ -148,6 +147,24 @@
 
 #conteinerBlock {
   margin: 1.5% 0% 1.5% 0%;
+}
+
+@media (max-width: 767px) {
+  #rightBlock {
+    margin: 0% 3% 0% 3%;
+  }
+
+  #leftBlock {
+    margin: 0% 3% 0% 3%;
+  }
+
+  #rightBlock-h {
+    margin: 0% 3% 0% 3%;
+  }
+
+  #leftBlock-h {
+    margin: 0% 3% 0% 3%;
+  }
 }
 
 
