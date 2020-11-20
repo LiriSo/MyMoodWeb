@@ -1,0 +1,16 @@
+<app-head-page></app-head-page>
+<router-outlet></router-outlet>
+<app-footer-site></app-footer-site>
+<div class="cookies-alart" *ngIf="ShowCookiesAlart && !learnMore">
+  <h3>אתר זה עושה שימוש בקבצי Cookies</h3>
+  <a (click)="learnMore=true"> לחץ כאן כדי לקרוא עוד </a>
+   או
+  <a (click)="hideCookies()">הסתר </a>
+</div>
+<div class="cookies-alart-more" *ngIf="ShowCookiesAlart && learnMore">
+  <h2>Cookies באתר</h2>
+  <p class="scroll-info">
+  החברה תהא רשאית לעשות שימוש ב-"עוגיות" Cookies (קבצי טקסט קטנים אשר מאוחסנים, על ידי האתר, על הכונן הקשיח של המחשב של המשתמש באמצעות הדפדפן) או טכנולוגיות דומות –  לצורך בין היתר, תפעולו השוטף והתקין, איסוף נתונים סטטיסטיים אודות השימוש באתר, אימות פרטים, התאמת האתר להעדפות האישיות של הלקוחות, לצורכי אבטחת מידע, שיפור חווית משתמש, לספק למשתמש שירות מהיר ויעיל ולמנוע מהמשתמש את הצורך להזין את פרטיו האישיים בכל כניסה לאתר. דפדפנים מודרניים כוללים אפשרות להימנע מקבלת Cookies אם אינך יודע כיצד לעשות זאת, בדוק בקובץ העזרה של הדפדפן שבו אתה משתמש.
+  </p>
+  <a (click)="hideCookies()">הסתר </a>
+</div>

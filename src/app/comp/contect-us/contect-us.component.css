@@ -1,0 +1,51 @@
+.section_form {
+  text-align: center;
+}
+
+.form-style {
+  justify-content: center;
+  display: flex;
+}
+
+.field-style {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+
+p{
+  width: 100px;
+  padding: 5px;
+  margin: 0px;
+  text-align: right;
+  float: right;
+}
+
+input {
+  width: 250px;
+  padding: 5px;
+  margin: 0px;
+  font-size: 1.3em;
+  text-align: right;
+  float: right;
+}
+
+textarea {
+  width: 500px;
+  length: 200px;
+  padding: 5px;
+  margin: 0px;
+  font-size: 1.3em;
+}
+
+
+
+.center {
+  margin-right: 0px;
+}
+
+.material-icons {
+  color: #dbf7cd;
+}

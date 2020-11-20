@@ -1,0 +1,28 @@
+.info-content {
+  text-align: center;
+}
+
+img {
+  width:20%;
+  shadow: 1px 1px 5px white;
+}
+
+p {
+    color: #1A5276;;
+    width: 100%;
+}
+
+.contact-me {
+  width: 60px;
+  padding: 10px;
+}
+
+.contact-me:hover {
+  width: 70px;
+  shadow: 0px 0px 6px black;
+  padding: 10px;
+}
+
+.links {
+  height: 80px;
+}

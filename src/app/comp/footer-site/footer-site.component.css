@@ -1,0 +1,9 @@
+li a {
+  padding: 8px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: none;
+  text-decoration: underline;
+}

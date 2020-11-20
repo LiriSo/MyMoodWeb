@@ -1,0 +1,136 @@
+<ul id = "path" class="col-lg-12 col-md-12 col-sm-12">
+  <li><a routerLink="/">דף ראשי</a></li>
+  <li> < </li>
+  <li><a>שתפו אותנו</a></li>
+</ul>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <div class="info-content">
+    <h1 class="sub">יש לכם רעיון למוד שעוד אין באתר?</h1>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <h2>איך זה עובד?</h2>
+      <p>הכי פשוט שיש, כותבים לנו הצעה, משאירים פרטים, ואם הרעיון שלכם ימצא חן בעיננו ניצור דגם חדש בהשראתו ותוכלו לרכוש אותו בהנחה משמעותית!
+        <br><br>
+      *בכפוף לתקנון
+</p>
+      <h2><br><br>למה אתם מחכים?</h2>
+    </div>
+    <div class="form-style center">
+    <form class="section_form  col-lg-12 col-md-12 col-sm-12"
+     #contact="ngForm" (ngSubmit)="onSubmit(contact.value)">
+      <div class = "msg " *ngIf="invalidSubmit">
+        <p class = "note"> שים לב!  </p>
+        <p *ngIf="userName.errors?.required">  חובה למלא שם  </p>
+        <p  *ngIf="userName.errors?.minlength">  על השם להיות באורך של לפחות 2 תוים    </p>
+        <p  *ngIf="!(userEmail.errors?.required) && userEmail.invalid">  כתובת מייל לא תקינה  </p>
+        <p  *ngIf="userPhone.errors?.required">  חובה למלא טלפון      </p>
+        <p  *ngIf="userPhone.errors?.minlength">  הכנס מספר טלפון תקין    </p>
+        <p *ngIf="userSubject.errors?.required"> חובה למלא שם מוד </p>
+        <p  *ngIf="userSubject.errors?.minlength"> שם המוד חייב להיות באורך של לפחות 2 תווים    </p>
+        <p  *ngIf="userText.invalid">   על התיאור להכיל לפחות 10 תווים    </p>
+        <button class="button" (click)="invalidSubmit=false">
+          <span>סבבה</span></button>
+      </div>
+      <h2>פרטים לחזרה</h2>
+
+      <div class="form-group field-style col-lg-12 col-md-12 col-sm-12">
+        <p>שם</p>
+        <input type="text"
+        class = "form-control small-field"
+        ngModel name="name"
+        #userName = "ngModel"
+        minlength="2"
+        required>
+      </div>
+      <div class="error-msg">
+        <span  *ngIf="userName.errors?.required && userName.touched">
+  חובה למלא שם
+        </span>
+        <span  *ngIf="userName.errors?.minlength && userName.touched">
+  על השם להיות באורך של לפחות 2 תוים
+        </span>
+        <span class="material-icons" *ngIf="!userName.invalid && userName.touched">
+          thumb_up_alt
+        </span>
+      </div>
+
+
+      <div class="form-group field-style col-lg-12 col-md-12 col-sm-12">
+        <p>מייל</p>
+        <input type="email"
+        class = "form-control small-field"
+        ngModel email name="email"
+        #userEmail = "ngModel">
+      </div>
+      <div class="error-msg">
+        <span  *ngIf="!(userEmail.errors?.required) && userEmail.invalid && userEmail.touched">
+  כתובת מייל לא תקינה
+        </span>
+        <span class="material-icons" *ngIf="!userEmail.invalid && userEmail.touched">
+          thumb_up_alt
+        </span>
+      </div>
+
+      <div class="form-group field-style col-lg-12 col-md-12 col-sm-12">
+        <p>טלפון</p>
+        <input type="text"
+        class = "form-control small-field"
+        ngModel name="phone"
+        #userPhone = "ngModel"
+        minlength ="10"
+        maxlength ="10"
+        required>
+      </div>
+      <div class="error-msg">
+        <span  *ngIf="userPhone.errors?.required && userPhone.touched">
+  חובה למלא טלפון
+        </span>
+        <span  *ngIf="userPhone.errors?.minlength && userPhone.touched">
+  הכנס מספר טלפון תקין
+        </span>
+        <span class="material-icons" *ngIf="!userPhone.invalid && userPhone.touched">
+          thumb_up_alt
+        </span>
+      </div>
+
+      <h2>ההצעה שלי</h2>
+      <div class="form-group field-style col-lg-12 col-md-12 col-sm-12">
+        <p>המוד שלי </p>
+        <input type="subject"
+        class = "form-control small-field"
+        ngModel name="subject"
+        #userSubject = "ngModel"
+        minlength="2"
+        required>
+      </div>
+      <div class="error-msg">
+        <span  *ngIf="userSubject.errors?.required && userSubject.touched">
+נא למלא שם למוד
+        </span>
+        <span  *ngIf="userSubject.errors?.minlength && userSubject.touched">
+שם המוד חייב להכיל לפחות 2 תוים
+        </span>
+        <span class="material-icons" *ngIf="!userSubject.invalid && userSubject.touched">
+          thumb_up_alt
+        </span>
+      </div>
+      <div class="form-group field-style col-lg-12 col-md-12 col-sm-12">
+       <textarea class="form-control" name="text"
+       #userText = "ngModel" required
+       placeholder="תיאור קצר של הרעיון"
+        rows="10" cols="80" minlength ="10" ngModel></textarea>
+      </div>
+      <div class="error-msg center">
+         <span  *ngIf="userText.invalid && userText.touched">
+         על התיאור להכיל לפחות 10 תוים
+         </span>
+      </div>
+      <button *ngIf="contact.invalid" class="button" (click)="invalidSubmit=true"><span>שלח טופס</span></button>
+      <button *ngIf="!contact.invalid" type="submit" class="button" routerLink="submmited"><span>שלח טופס</span></button>
+
+    </form>
+
+    </div>
+  </div>
+</div>

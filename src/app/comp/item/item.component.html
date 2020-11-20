@@ -1,0 +1,183 @@
+<ul id = "path" class="col-lg-12 col-md-12 col-sm-12">
+  <li><a routerLink="/">דף ראשי</a></li>
+  <li> < </li>
+  <li><a routerLink="/items-show">כל הקטגוריות</a></li>
+  <li> < </li>
+  <li><a routerLink="/items-show/{{item.tag_1}}">{{item.tag_1}}</a></li>
+  <li> < </li>
+  <li><a routerLink="/item/{{item.code}}">{{item.name}} {{item.color}}</a></li>
+</ul>
+
+<div class="shop-content col-lg-12 col-md-12 col-sm-12">
+  <div *ngIf="successfulyAdded">
+    <div class="block-window">
+    </div>
+    <div class = "msg">
+      <p class="little-text col-lg-12 col-md-12 col-sm-12">נוסף בהצלחה</p>
+      <div>
+        <img class="little-img"
+        src="https://github.com/LiriSo/mymood/blob/master/{{item?.id}}.PNG?raw=true">
+        <p>דגם: {{item.name}}</p>
+        <p>מידה: {{sizeOnCart}}</p>
+      </div>
+      <button class="button" routerLink="/cart">
+        <span>צפה בעגלה</span></button>
+      <button class="button" (click)="successfulyAdded=false">
+        <span>המשך בקניה</span></button>
+    </div>
+  </div>
+  <div *ngIf="limitQuantity">
+    <div class="block-window">
+    </div>
+    <div class = "msg">
+      <p>לא קיימים במלאי פריטים נוספים מסוג זה. בחר מידה או דוגמה אחרת :)</p>
+      <button class="button" routerLink="/cart">
+        <span>צפה בעגלה</span></button>
+      <button class="button" (click)="limitQuantity=false">
+        <span>המשך בקניה</span></button>
+    </div>
+  </div>
+  <div class="item-div-right col-lg-6 col-md-6 col-sm-12">
+    <h1>{{ item?.name }}</h1>
+    <section>
+      <p>מוד ראשי:</p>
+      <p class="tag" *ngIf="item?.tag_1 != null"><a routerLink="/items-show/{{item?.tag_1}}">{{item?.tag_1}}</a></p>
+      <p *ngIf="item?.tag_2 != null">מודים קשורים:</p>
+      <p class="tag" *ngIf="item?.tag_2 != null"><a routerLink="/items-show/{{item?.tag_2}}">{{item?.tag_2}}</a></p>
+      <p class="tag" *ngIf="item?.tag_3 != null"><a routerLink="/items-show/{{item?.tag_3}}">{{item?.tag_3}}</a></p>
+      <p class="tag" *ngIf="item?.tag_4 != null"><a routerLink="/items-show/{{item?.tag_4}}">{{item?.tag_4}}</a></p>
+    </section>
+    <section>
+      <p>מחיר: {{item?.c_price | currency:'ILS'}}</p>
+      <p class="before-discount" *ngIf="item?.c_price<item?.f_price"> {{item?.f_price | currency:'ILS'}}</p>
+    </section>
+    <section>
+      <p>מידה:</p>
+    <div class="sizes-group" novalidate>
+      <ng-conteiner *ngFor="let size of listOfSizes">
+        <ng-conteiner *ngIf="itemsOnStock(size) > 0">
+          <button class="chosen-size" *ngIf="chosenSize===size">{{ size }}</button>
+          <button class="sizes" *ngIf="chosenSize!=size" (click)="chosenSize=size; notInStock=false;
+          lowStock(size)" >
+          {{ size }}</button>
+            </ng-conteiner>
+            <ng-conteiner *ngIf="itemsOnStock(size) == 0 && size!='XS' && size!='XXL' && size!='XXXL'">
+          <button class="sizes-diasble" (click)="notInStock=true; lowOnStock=[false,0]; chosenSize = ''">{{ size }}</button>
+        </ng-conteiner>
+      </ng-conteiner>
+    </div>
+  </section>
+    <p class="importent-message" *ngIf="notInStock==true"> size not in stock </p>
+    <p class="importent-message" *ngIf="lowOnStock[0]==true"> left only {{lowOnStock[1]}} in stock </p>
+    <p class="importent-message" *ngIf="!inStock()"> item not in stock </p>
+  <section>
+    </section>
+    <section>
+          <p>צבע: {{item?.color}}</p>
+    </section>
+    <section class="purchase" *ngIf="chosenSize!=''">
+            <button class="button" (click)="addToCart()">
+              <span>הוסף לעגלה</span></button>
+            <button class="button" routerLink="/purchase/now/{{item.id}}/{{chosenSize}}">
+              <span>קנה עכשיו</span></button>
+    </section>
+    <section class="purchase" *ngIf="chosenSize==''">
+            <span *ngIf="alartNoSizeChoosen">נא לבחור מידה<br></span>
+            <button class="button" (click)="noChoseSize()">
+              <span>הוסף לעגלה</span></button>
+            <button class="button" (click)="noChoseSize()">
+              <span>קנה עכשיו</span></button>
+    </section>
+
+  </div>
+  <div class="item-div-left col-lg-6 col-md-6 col-sm-12">
+    <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+    <img class="item-image" (load)="showSpinner=false"
+    src="https://github.com/LiriSo/mymood/blob/master/{{item?.id}}.PNG?raw=true">
+  </div>
+
+  <div class="item-bottom">
+      <ul class="item-bottom col-lg-12 col-md-12 col-sm-12">
+        <li><a (click)="page=1">תיאור</a></li>
+        <li><a (click)="page=2">התאמת מידות</a></li>
+        <li><a (click)="page=3">על הקטגוריה</a></li>
+      </ul>
+      <div class="desc-item-bottom col-lg-12 col-md-12 col-sm-12">
+        <p *ngIf="page === 1">{{item?.desc}}</p>
+        <table *ngIf="page === 2">
+          <thead>
+            <tr>
+              <th>מידה</th>
+              <th>חזה</th>
+              <th>שרוול</th>
+              <th>מותניים</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>XS</td>
+              <td>88-92</td>
+              <td>82.5</td>
+              <td>78-81</td>
+            </tr>
+            <tr>
+              <td>S</td>
+              <td>93-95</td>
+              <td>84</td>
+              <td>82-84</td>
+            </tr>
+            <tr>
+              <td>M</td>
+              <td>96-100</td>
+              <td>85.5</td>
+              <td>85-89</td>
+            </tr>
+            <tr>
+              <td>L</td>
+              <td>101-104</td>
+              <td>87</td>
+              <td>89-92</td>
+            </tr>
+            <tr>
+              <td>XL</td>
+              <td>105-106</td>
+              <td>88</td>
+              <td>93-97</td>
+            </tr>
+            <tr>
+              <td>XXL</td>
+              <td>107-110</td>
+              <td>89</td>
+              <td>98-102</td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="page === 3">{{aboutCat}}</p>
+        </div>
+        <div class="center col-lg-12 col-md-12 col-sm-12">
+        <h2>אולי תאהב פריטים נוספים של {{item?.tag_1}}</h2>
+        </div>
+        <div id="more-items" class="show-more col-lg-12 col-md-12 col-sm-12">
+          <drag-scroll #nav2 class="items-banner" drag-scroll-y-disabled="true" scrollbar-hidden="true">
+            <div drag-scroll-item *ngFor="let i of sameTagItems" class ="item-squer">
+              <div class="single-item" routerLink="/item/{{i.id}}">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+                <img class="small-item-image" (load)="showSpinner=false"
+                src="https://github.com/LiriSo/mymood/blob/master/{{i.id}}.PNG?raw=true">
+                </div>
+                <div class="item-desc">
+                  <p class="item-name"> {{i.name}} </p>
+                  <div class="prices">
+                    <p class="item-full-price" *ngIf="i.c_price<i.f_price"> {{i.f_price | currency:'ILS'}} </p>
+                    <p class="item-current-price"> {{i.c_price | currency:'ILS'}} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <i class="material-icons" id="preBtnL" (click)="moveRight2()"> keyboard_arrow_right </i>
+            <i class="material-icons" id="nextBtnR" (click)="moveLeft2()"> keyboard_arrow_left </i>
+          </drag-scroll>
+        </div>
+  </div>
+</div>

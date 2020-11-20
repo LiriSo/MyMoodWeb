@@ -1,0 +1,12 @@
+.sum-cart {
+	background-color: #473c19;
+	color: #fff1c4;
+	text-align: center;
+	float: right;
+}
+
+.sum-cart li {
+	display: grid;
+	font-size: 1.5em;
+	padding: 10px;
+}

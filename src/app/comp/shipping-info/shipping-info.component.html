@@ -1,0 +1,33 @@
+<ul id = "path" class="col-lg-12 col-md-12 col-sm-12">
+  <li><a routerLink="/">דף ראשי</a></li>
+  <li> < </li>
+  <li><a>משלוחים</a></li>
+</ul>
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <div class="info-content">
+    <h1>המשלוחים שלנו</h1>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <h2>ביצעתם הזמנה, מה עכשיו?</h2>
+      <p>תוכלו בכל עת לבדוק את מצב משלוח שלכם באתר דואר ישראל</p>
+      <a class="button" target="_blank"
+        href="https://mypost.israelpost.co.il/%D7%9E%D7%A2%D7%A7%D7%91-%D7%9E%D7%A9%D7%9C%D7%95%D7%97%D7%99%D7%9D">
+        <span>כאן</span></a>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <h2>שיטות המשלוח שלנו</h2>
+      <ul class = "grid-list-head">
+        <li><h3>סוג שיטה</h3></li>
+        <li><h3>תיאור</h3></li>
+        <li><h3>זמן אספקה</h3></li>
+        <li><h3>מחיר</h3></li>
+      </ul>
+      <ul class = "grid-list" *ngFor="let method of shippingMethod">
+        <li>{{method.name}}</li>
+        <li>{{method.desc}}</li>
+        <li>{{method.time}}</li>
+        <li>{{method.price | currency: 'ILS'}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

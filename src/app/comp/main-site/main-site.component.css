@@ -1,0 +1,196 @@
+.content {
+  background-color: #FCF3CF;
+  box-sizing: content-box;
+}
+
+.middle-nav {
+  align-content: center;
+  padding: 0px;
+  margin: 0% 3% 0% 3%;
+}
+
+.nav-title {
+  display: block;
+  float:right;
+	direction: rtl;
+	background-color: #1A5276;
+	border-top: 1px solid #E5E9EF;
+	border-bottom: 1px solid #E5E9EF;
+	color: #D4E6F1;
+	margin: 1.5% 0% 1.5% 0%;
+}
+
+.nav-title li {
+	display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.nav-title li a{
+		color: #D4E6F1;
+}
+
+.nav-title li a:hover{
+		color: #1A5276;
+}
+
+
+#ban-img {
+  height: 200px;
+  width: 400px;
+}
+
+#bannerHead {
+  margin-top:100px;
+  font-size: 80px;
+  direction: rtl;
+}
+
+#bannerHeadSub {
+  font-size: 85px;
+  margin-bottom:160px;
+  direction: rtl;
+}
+
+
+#bannerSub {
+  font-size: 25px;
+  direction: rtl;
+  color: #2471A3;
+  text-decoration: none;
+  background-color: pink;
+}
+
+#lifestyle, #study, #nature {
+	text-align: center;
+	font-weight: bold;
+	height: 100px;
+	font-size: 4em;
+  padding-top: 5%;
+	color: #2471A3;
+	text-shadow: 0px 0px 5px white;
+	background-position: center;
+	position: none;
+}
+
+#nature {
+	background-image: url("https://github.com/LiriSo/mymood/blob/master/nature.png?raw=true");
+}
+
+#study {
+	background-image: url("https://github.com/LiriSo/mymood/blob/master/study.png?raw=true");
+}
+
+#lifestyle {
+	background-image: url("https://github.com/LiriSo/mymood/blob/master/lifestyle.png?raw=true");
+}
+
+#gray {
+  background-color: #F9E79F;
+}
+
+
+.banner {
+  position: none;
+  margin: 0 auto;
+  height: auto;
+  padding: 10px;
+  background-color: #FCF3CF;
+  text-align: center;
+  align-items: center;
+  margin: 3% 3% 0% 3%;
+}
+
+.top-banner {
+  margin: 0 auto;
+  height: auto;
+  padding: 10px;
+  background-color: #FCF3CF;
+  text-align: center;
+  margin: 1.5% 3% 0% 3%;
+}
+
+.button-banner {
+  margin: 0 auto;
+  height: 80px;
+  background-color: #FCF3CF;
+  text-align: center;
+  margin:  0% 3% 1.5% 3%;
+}
+
+.items-banner {
+  height: 390px;
+  background-color: #FCF3CF;
+  margin: 0% 3% 0% 3%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  white-space: nowrap;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+#rightBlock {
+  margin: 0% 6% 0% 3%;
+}
+
+#leftBlock {
+  margin: 0% 3% 0% 6%;
+}
+
+#rightBlock-h {
+  margin: 0% 4.5% 0% 2.25%;
+}
+
+#leftBlock-h {
+  margin: 0% 6% 0% 12%;
+}
+
+#conteinerBlock {
+  margin: 1.5% 0% 1.5% 0%;
+}
+
+
+.bannerImg {
+  display: inline-block;
+  width: 60%;
+  top: 20px;
+  /* position: absolute; */
+}
+
+#gray .bannerImg {
+  display: inline-block;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.fav-button-main {
+	display: none;
+	position: absolute;
+  bottom:40%;
+  left:20%;
+  opacity: 0.85;
+}
+
+.fav-button-main-12 {
+  left:25%;
+}
+
+.fav-button-main-6 {
+  left:17.5%;
+}
+
+/* @keyframes show-option-main {
+0%   {opacity: 0; bottom: 30%;}
+100% {opacity: 1; bottom: 45px;}
+} */
+
+.single-item:hover + .fav-button-main, .fav-button-main:hover {
+	display: flex;
+	animation-name: show-option;
+	animation-duration: 1s;
+}
+
+.button:hover span:after {
+	right: 105%;
+}

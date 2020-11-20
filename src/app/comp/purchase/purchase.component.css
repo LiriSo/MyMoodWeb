@@ -1,0 +1,133 @@
+.section_form {
+  text-align: center;
+}
+
+.form-style {
+  justify-content: center;
+  display: flex;
+}
+
+.field-style {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+
+.section_form p{
+  width: 100px;
+  padding: 5px;
+  margin: 0px;
+  text-align: right;
+  float: right;
+}
+
+.select-shipping {
+  display: inline-block;
+  height: 40px;
+  width: 100%;
+  vertical-align: middle;
+  background-color: white;
+  margin-bottom: 50px;
+}
+.select-shipping input {
+  vertical-align: middle;
+  float:left;
+}
+.select-shipping li {
+  line-height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 3%;
+	padding-right: 3%;
+  width: 17%;
+  float: right;
+}
+
+#desc {
+  width: 32%
+}
+
+#left-to-get-free {
+  color: red;
+  text-shadow: none;
+}
+#get-free {
+  color: green;
+  text-shadow: none;
+}
+
+.ship {
+  padding: 30px;
+  text-align: center;
+}
+
+
+
+.shipping-option {
+  display: inline-grid;
+  width: 100%;
+  text-align: center;
+}
+
+.shipping-option input {
+    display: inline-grid;
+  width: 5%;
+  text-align: center;
+  background-color: green;
+}
+
+.form-group input {
+  width: 250px;
+  padding: 5px;
+  margin: 0px;
+  font-size: 1.3em;
+  text-align: right;
+  float: right;
+}
+
+textarea {
+  width: 500px;
+  length: 200px;
+  padding: 5px;
+  margin: 0px;
+  font-size: 1.3em;
+}
+
+.items-purchase {
+  height: 250px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.ship {
+  text-align: center;
+  padding: 20px;
+}
+
+.enter-coupon {
+  line-height: auto;
+  float:left;
+  text-align: center;
+}
+
+#coupon-button {
+  float:  right;
+  font-size: 0.8em;
+}
+
+.user-details {
+  float:right;
+}
+
+.center {
+  margin-right: 0px;
+}
+
+#total {
+  font-size: 2em;
+  padding: 10px;
+  font-weight: bolder;
+  background-color: pink;
+}

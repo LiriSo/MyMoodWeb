@@ -1,0 +1,232 @@
+<ul id = "path" class="col-lg-12 col-md-12 col-sm-12">
+  <li><a routerLink="/">דף ראשי</a></li>
+  <li> < </li>
+  <li><a routerLink="/cart">עגלת הקניות</a></li>
+  <li> < </li>
+  <li><a>רכישה</a></li>
+</ul>
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <div class="cart-content">
+    <h1>ביצוע רכישה</h1>
+    <div class="user-details col-lg-6 col-md-6 col-sm-12">
+      <form class="section_form col-lg-12 col-md-12 col-sm-12"
+       #user="ngForm" (ngSubmit)="onSubmit(user.value)">
+        <h2>פרטים אישיים</h2>
+
+        <div class="form-group field-style col-lg-12 col-md-12 col-sm-12">
+          <p>שם מלא</p>
+          <input type="text"  class = "form-control small-field"    ngModel name="name"
+          #userName = "ngModel"  minlength="2"  required>
+        </div>
+        <div class="error-msg">
+          <span  *ngIf="userName.errors?.required && userName.touched">
+    חובה למלא שם
+          </span>
+          <span  *ngIf="userName.errors?.minlength && userName.touched">
+    על השם להיות באורך של לפחות 2 תוים
+          </span>
+          <span class="material-icons" *ngIf="!userName.invalid && userName.touched">
+            thumb_up_alt
+          </span>
+        </div>
+
+
+        <div class="form-group field-style col-lg-12 col-md-12 col-sm-12">
+          <p>מייל</p>
+          <input type="email"
+          class = "form-control small-field"
+          ngModel email name="email"
+          #userEmail = "ngModel"
+          required>
+        </div>
+        <div class="error-msg">
+          <span  *ngIf="userEmail.errors?.required && userEmail.touched">
+    חובה למלא כתובת מייל
+          </span>
+          <span  *ngIf="!(userEmail.errors?.required) && userEmail.invalid && userEmail.touched">
+    כתובת מייל לא תקינה
+          </span>
+          <span class="material-icons" *ngIf="!userEmail.invalid && userEmail.touched">
+            thumb_up_alt
+          </span>
+        </div>
+
+        <div class="form-group field-style col-lg-12 col-md-12 col-sm-12">
+          <p>עיר</p>
+          <input type="text"  class = "form-control small-field"    ngModel name="city"
+          #userCity = "ngModel"  minlength="2"  required>
+        </div>
+        <div class="error-msg">
+          <span  *ngIf="userCity.errors?.required && userCity.touched">
+    חובה למלא שם
+          </span>
+          <span  *ngIf="userCity.errors?.minlength && userCity.touched">
+    על השם להיות באורך של לפחות 2 תוים
+          </span>
+          <span class="material-icons" *ngIf="!userCity.invalid && userCity.touched">
+            thumb_up_alt
+          </span>
+        </div>
+
+        <div class="form-group field-style col-lg-12 col-md-12 col-sm-12">
+          <p>כתובת</p>
+          <input type="text"  class = "form-control small-field"    ngModel name="adress"
+          #userAdress = "ngModel"  minlength="2"  required>
+        </div>
+        <div class="error-msg">
+          <span  *ngIf="userAdress.errors?.required && userAdress.touched">
+    חובה למלא שם
+          </span>
+          <span  *ngIf="userAdress.errors?.minlength && userAdress.touched">
+    על השם להיות באורך של לפחות 2 תוים
+          </span>
+          <span class="material-icons" *ngIf="!userAdress.invalid && userAdress.touched">
+            thumb_up_alt
+          </span>
+        </div>
+
+        <div class="form-group field-style col-lg-12 col-md-12 col-sm-12">
+          <p>טלפון</p>
+          <input type="text"
+          class = "form-control small-field"
+          ngModel name="phone"
+          #userPhone = "ngModel"
+          minlength ="10"
+          maxlength ="10"
+          required>
+        </div>
+        <div class="error-msg">
+          <span  *ngIf="userPhone.errors?.required && userPhone.touched">
+    חובה למלא טלפון
+          </span>
+          <span  *ngIf="userPhone.errors?.minlength && userPhone.touched">
+    הכנס מספר טלפון תקין
+          </span>
+          <span class="material-icons" *ngIf="!userPhone.invalid && userPhone.touched">
+            thumb_up_alt
+          </span>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="items-purchase col-lg-6 col-md-6 col-sm-12">
+      <ul class="head-table col-lg-12 col-md-12 col-sm-12">
+        <li></li>
+        <li>פריט</li>
+        <li>מידה</li>
+        <li>כמות</li>
+        <li>מחיר</li>
+        <li>סה"כ</li>
+      </ul>
+      <ng-conteiner *ngIf="items.length>0">
+        <ng-conteiner *ngFor="let item of items">
+          <ul class="item-in-cart col-lg-12 col-md-12 col-sm-12">
+            <!-- <li>
+              <button (click)="askToFav=true; currItem=item">מחק</button>
+              <div class = "msg" *ngIf="askToFav">
+                <p>תרצה במקום למחוק להוסיף למועדפים כדי לזכור את הפריט יותר?</p>
+                <button class="button" (click)="addToFav(item); remove(currItem); askToFav=false" routerLink="/cart">
+                  <span>הוסף למועדפים</span></button>
+                <button class="button" (click)="askToFav=false; remove(currItem)">
+                  <span>לא תודה</span></button>
+              </div>
+            </li> -->
+            <li><img class="cart-img" src="{{item.picUrl}}"></li>
+            <li>{{item.product.name}} {{item.product.color}}</li>
+            <li>{{item.size}}</li>
+            <li>
+              <select [(ngModel)]="item.quantity" (change)="validChanged(total())">
+                <option *ngFor="let i of item.availableToPurchase"
+                value="{{i}}">{{i}}</option>
+              </select>
+            </li>
+            <li>{{item.product.f_price | currency: 'ILS'}}</li>
+            <li>{{(item.product.f_price*item.quantity) | currency: 'ILS'}}</li>
+          </ul>
+        </ng-conteiner>
+      </ng-conteiner>
+      <ng-conteiner *ngIf="items.length==0 && state">
+        <ul class="item-in-cart col-lg-12 col-md-12 col-sm-12">
+          <li>
+            <button (click)="askToFav=true">delete</button>
+              <div class = "msg" *ngIf="askToFav">
+                <p>תרצה במקום למחוק להוסיף למועדפים כדי לזכור את הפריט יותר?</p>
+                <button class="button" (click)="addToFav(singleItem); askToFav=false" routerLink="/items-show">
+                  <span>הוסף למועדפים</span></button>
+                <button class="button" (click)="askToFav=false" routerLink="/items-show">
+                  <span>לא תודה</span></button>
+              </div>
+            </li>
+            <li><img class="cart-img" src="{{singleItem?.picUrl}}"></li>
+            <li>{{singleItem?.product.name}} {{singleItem?.product.color}}</li>
+            <li>{{singleItem?.size}}</li>
+            <li>
+              <select [(ngModel)]="singleItem.quantity" (change)="validChanged(total())">
+                <option *ngFor="let i of singleItem.availableToPurchase"
+                value="{{i}}">{{i}}</option>
+              </select>
+            </li>
+            <li>{{(singleItem.product.c_price*singleItem.quantity) | currency: 'ILS'}}</li>
+          </ul>
+        </ng-conteiner>
+
+          <!-- <form #itemForm="ngForm" (ngSubmit)="checkCoupon(coupon.code)">
+            <label for="coupon">
+              הכנס קוד קופון
+              <input #coupon class="form-control" name="coupon" ngModel required />
+            </label>
+            <button type="submit">Submit</button>
+          </form> -->
+  </div>
+  <div class="enter-coupon col-lg-6 col-md-6 col-sm-12">
+    <p>הכנס קוד קופון</p>
+    <input #mycoupon type="text" class = "small-field"/>
+    <button class="button" id="coupon-button" (click)="checkCoupon(mycoupon.value)">
+      <span>הפעל</span></button>
+  <p *ngIf="coupon.code!='' && coupon.discount==0">קוד קופון לא תקין</p>
+  <p *ngIf="coupon.code!='' && coupon.valid==false">כדי להשתמש בקופון יש לרכוש בלפחות
+    {{coupon.min | currency: 'ILS'}}</p>
+  <p *ngIf="coupon.valid">הופעל קוד קופון</p>
+  </div>
+
+  <div class="ship col-lg-12 col-md-12 col-sm-12">
+      <h3 id="left-to-get-free"  *ngIf="freeShipping>0 && selectedMethod!=shippingMethod[2]">קנה בעוד
+      {{freeShipping | currency: 'ILS'}}
+      וקבל משלוח חינם
+      </h3>
+      <h3 id="get-free" *ngIf="freeShipping==0 || selectedMethod==shippingMethod[2]">אתה זכאי למשלוח מסוג זה חינם!</h3>
+
+        <ul class="select-shipping">
+          <li>בחר שיטת משלוח</li>
+          <li>
+            <select [(ngModel)]="selectedMethod" (change)="validChanged(total())">
+              <option *ngFor="let method of shippingMethod"
+              [ngValue]="method">{{method.name}}</option>
+            </select>
+          </li>
+          <li id="desc">{{selectedMethod.desc}}</li>
+          <li>{{selectedMethod.time}}</li>
+          <li>{{selectedMethod.price | currency: 'ILS'}}</li>
+        </ul>
+      <!-- </div> -->
+
+        <ul class="sum-cart col-lg-12 col-md-12 col-sm-12">
+          <li>סה"כ {{countItems()}} מוצרים בסל</li>
+          <li>סכום ביניים: {{sumItems() | currency: 'ILS'}}</li>
+          <li>הנחה: {{beforeCoupon()-sumItems() | currency: 'ILS'}}</li>
+          <li *ngIf="discount!=0 && total()>200">הנחת קופון נוספת: {{total()-beforeCoupon() | currency: 'ILS'}}</li>
+          <li>משלוח: {{selectedMethod.price | currency: 'ILS'}}</li>
+          <li id="total">סה"כ לתשלום: {{(total()+selectedMethod.price) | currency: 'ILS'}}</li>
+          <li><button type="submit" class="button" routerLink="/">
+            <span>לתשלום מאובטח</span></button></li>
+        </ul>
+
+        </div>
+      <!-- </div> -->
+    <!-- </div>
+  </div>
+</div> -->
+</div>
+</div>

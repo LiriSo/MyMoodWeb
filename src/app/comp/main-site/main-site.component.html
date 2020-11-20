@@ -1,0 +1,202 @@
+<!-- <div class="side-banner col-lg-2 col-md-2 col-sm-12">
+  <img *ngIf="small" class ="side-banner-img" (load)="showSpinner=false"
+  routerLink="/tell-us"
+  src="https://github.com/LiriSo/mymood/blob/master/banland.png?raw=true">
+  <img *ngIf="!small" class ="side-banner-img" (load)="showSpinner=false"
+  routerLink="/tell-us"
+  src="https://github.com/LiriSo/mymood/blob/master/banport.png?raw=true">
+</div> -->
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <div class="middle-nav">
+      <ul class="nav-title col-lg-12 col-md-12 col-sm-12">
+        <li><a routerLink="/items-show">כל הקטגוריות</a></li>
+        <li *ngFor="let t of listOfTags">
+          <a routerLink="/items-show/{{t.tag}}">{{t.tag}}</a>
+        </li>
+
+      </ul>
+  </div>
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-12" id="conteinerBlock">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class = "banner" id="leftBlock-h">
+      <h1 id="bannerHead">מה ה</h1>
+      <img id="ban-img" src="https://github.com/LiriSo/mymood/blob/master/banport.png?raw=true">
+      <h1 id="bannerHeadSub">שלכם?!</h1>
+      <a id="bannerSub" routerLink="/tell-us">לחצו לפרטים נוספים</a>
+    </div>
+  </div>
+</div>
+
+
+  <div class="col-lg-9 col-md-9 col-sm-12" id="conteinerBlock">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class = "banner" id="rightBlock-h">
+        <h1 id="lifestyle">פנאי</h1>
+      </div>
+    </div>
+    <div class="show-more col-lg-12 col-md-12 col-sm-12">
+      <drag-scroll #nav4 class="items-banner" id="rightBlock-h" drag-scroll-y-disabled="true" scrollbar-hidden="true">
+        <div drag-scroll-item *ngFor="let i of animalItems" class ="item-squer">
+          <div class="single-item" routerLink="/item/{{i.id}}">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+            <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+            <img class="small-item-image" (load)="showSpinner=false"
+            src="https://github.com/LiriSo/mymood/blob/master/{{i.id}}.PNG?raw=true">
+            </div>
+            <div class="item-desc">
+              <p class="item-name"> {{i.name}} </p>
+              <div class="prices">
+                <p class="item-full-price" *ngIf="i.c_price<i.f_price"> {{i.f_price | currency:'ILS'}} </p>
+                <p class="item-current-price"> {{i.c_price | currency:'ILS'}} </p>
+              </div>
+            </div>
+          </div>
+          <ul class="fav-button-main">
+            <li class="center" *ngIf="isFav(i)"><a class="add-fav-icon-s"
+            (click)="remove(i)"><i class="material-icons">favorite</i></a></li>
+            <li class="center" *ngIf="!isFav(i)"><a class="add-fav-icon"
+            (click)="addToFav(i)"><i class="material-icons">favorite</i></a></li>
+          </ul>
+        </div>
+        <i class="material-icons" id="preBtnR" (click)="moveRight4()"> keyboard_arrow_right </i>
+        <i class="material-icons" id="nextBtnR" (click)="moveLeft4()"> keyboard_arrow_left </i>
+      </drag-scroll>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="button-banner" id="rightBlock-h">
+        <button class="button" routerLink="/items-show/פנאי">
+          <span>צפה בכל הפריטים בקטגוריה</span></button>
+      </div>
+    </div>
+  </div>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class = "top-banner" id="gray">
+        <img class ="bannerImg" src="https://github.com/LiriSo/mymood/blob/master/black.png?raw=true">
+      </div>
+    </div>
+    <div class="show-more col-lg-12 col-md-12 col-sm-12">
+      <drag-scroll #nav1 class="items-banner" id="gray" drag-scroll-y-disabled="true" scrollbar-hidden="true">
+        <div drag-scroll-item *ngFor="let i of blackItems" class ="item-squer">
+          <div class="single-item" routerLink="/item/{{i.id}}">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+            <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+            <img class="small-item-image" (load)="showSpinner=false"
+            src="https://github.com/LiriSo/mymood/blob/master/{{i.id}}.PNG?raw=true">
+            </div>
+            <div class="item-desc">
+              <p class="item-name"> {{i.name}} </p>
+              <div class="prices">
+                <p class="item-full-price" *ngIf="i.c_price<i.f_price"> {{i.f_price | currency:'ILS'}} </p>
+                <p class="item-current-price"> {{i.c_price | currency:'ILS'}} </p>
+              </div>
+            </div>
+          </div>
+          <ul class="fav-button-main fav-button-main-12">
+            <li class="center" *ngIf="isFav(i)"><a class="add-fav-icon-s"
+            (click)="remove(i)"><i class="material-icons">favorite</i></a></li>
+            <li class="center" *ngIf="!isFav(i)"><a class="add-fav-icon"
+            (click)="addToFav(i)"><i class="material-icons">favorite</i></a></li>
+          </ul>
+        </div>
+      </drag-scroll>
+      <i class="material-icons" id="preBtnL" (click)="moveRight1()"> keyboard_arrow_right </i>
+      <i class="material-icons" id="nextBtnR" (click)="moveLeft1()"> keyboard_arrow_left </i>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="button-banner" id="gray">
+        <button class="button" routerLink="/items-show/sale">
+          <span>צפה בכל הפריטים שבמבצע</span></button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-lg-6 col-md-6 col-sm-12" id="conteinerBlock">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class = "banner" id="leftBlock">
+        <h1 id="nature">טבע</h1>
+      </div>
+    </div>
+    <div class="show-more col-lg-12 col-md-12 col-sm-12">
+      <drag-scroll #nav2 class="items-banner" id="leftBlock" drag-scroll-y-disabled="true" scrollbar-hidden="true">
+        <div drag-scroll-item *ngFor="let i of natureItems" class ="item-squer">
+          <div class="single-item" routerLink="/item/{{i.id}}">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+            <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+            <img class="small-item-image" (load)="showSpinner=false"
+            src="https://github.com/LiriSo/mymood/blob/master/{{i.id}}.PNG?raw=true">
+            </div>
+            <div class="item-desc">
+              <p class="item-name"> {{i.name}} </p>
+              <div class="prices">
+                <p class="item-full-price" *ngIf="i.c_price<i.f_price"> {{i.f_price | currency:'ILS'}} </p>
+                <p class="item-current-price"> {{i.c_price | currency:'ILS'}} </p>
+              </div>
+            </div>
+          </div>
+          <ul class="fav-button-main fav-button-main-6">
+            <li class="center" *ngIf="isFav(i)"><a class="add-fav-icon-s"
+            (click)="remove(i)"><i class="material-icons">favorite</i></a></li>
+            <li class="center" *ngIf="!isFav(i)"><a class="add-fav-icon"
+            (click)="addToFav(i)"><i class="material-icons">favorite</i></a></li>
+          </ul>
+        </div>
+        <i class="material-icons" id="preBtnL" (click)="moveRight2()"> keyboard_arrow_right </i>
+        <i class="material-icons" id="nextBtnL" (click)="moveLeft2()"> keyboard_arrow_left </i>
+      </drag-scroll>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="button-banner" id="leftBlock"v>
+        <button class="button" routerLink="/items-show/טבע">
+          <span>צפה בכל הפריטים בקטגוריה</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-6 col-sm-12" id="conteinerBlock">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class = "banner" id="rightBlock">
+        <h1 id="study">לימודים</h1>
+      </div>
+    </div>
+    <div class="show-more col-lg-12 col-md-12 col-sm-12">
+      <drag-scroll #nav3 class="items-banner" id="rightBlock" drag-scroll-y-disabled="true" scrollbar-hidden="true">
+        <div drag-scroll-item *ngFor="let i of studyItems" class ="item-squer">
+          <div class="single-item" routerLink="/item/{{i.id}}">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+            <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+            <img class="small-item-image" (load)="showSpinner=false"
+            src="https://github.com/LiriSo/mymood/blob/master/{{i.id}}.PNG?raw=true">
+            </div>
+            <div class="item-desc">
+              <p class="item-name"> {{i.name}} </p>
+              <div class="prices">
+                <p class="item-full-price" *ngIf="i.c_price<i.f_price"> {{i.f_price | currency:'ILS'}} </p>
+                <p class="item-current-price"> {{i.c_price | currency:'ILS'}} </p>
+              </div>
+            </div>
+          </div>
+          <ul class="fav-button-main fav-button-main-6">
+            <li class="center" *ngIf="isFav(i)"><a class="add-fav-icon-s"
+            (click)="remove(i)"><i class="material-icons">favorite</i></a></li>
+            <li class="center" *ngIf="!isFav(i)"><a class="add-fav-icon"
+            (click)="addToFav(i)"><i class="material-icons">favorite</i></a></li>
+          </ul>
+        </div>
+        <i class="material-icons" id="preBtnR" (click)="moveRight3()"> keyboard_arrow_right </i>
+        <i class="material-icons" id="nextBtnR" (click)="moveLeft3()"> keyboard_arrow_left </i>
+      </drag-scroll>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="button-banner" id="rightBlock">
+        <button class="button" routerLink="/items-show/לימודים">
+          <span>צפה בכל הפריטים בקטגוריה</span></button>
+      </div>
+    </div>
+  </div>

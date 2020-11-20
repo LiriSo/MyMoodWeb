@@ -1,0 +1,44 @@
+.cookies-alart {
+  direction: rtl;
+  background-color: #2d3c45;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  text-align: center;
+  padding: 10px;
+  opacity: 0.9;
+}
+
+.cookies-alart h3 {
+  padding: 0px;
+  margin: 0px;
+}
+
+.cookies-alart a, .cookies-alart-more a {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+.scroll-info {
+  color: white;
+}
+
+@keyframes show-message-more {
+0%   {opacity: 0; bottom: -50px;}
+100% {opacity: 0.9; bottom: 0px;}
+}
+.cookies-alart-more {
+  direction: rtl;
+  background-color: #2d3c45;
+  color: white;
+  position: fixed;
+  width: 20%;
+  height: 50%;
+  bottom: 0px;
+  text-align: center;
+  padding: 10px;
+  opacity: 0.9;
+  animation-name:show-message-more;
+}

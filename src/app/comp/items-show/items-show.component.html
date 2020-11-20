@@ -1,0 +1,55 @@
+<ul id = "path" class="col-lg-12 col-md-12 col-sm-12">
+  <li><a routerLink="/">דף ראשי</a></li>
+  <li> < </li>
+  <li><a routerLink="/items-show">כל הפריטים</a></li>
+  <li *ngIf="spesificTag!='' && spesificTag!='sale'"> < </li>
+  <li *ngIf="spesificTag!='' && spesificTag!='sale'"><a>{{spesificTag}}</a></li>
+  <li *ngIf="isSale"> < </li>
+  <li *ngIf="isSale"><a>פריטים במבצע</a></li>
+</ul>
+
+<div class="conteiner">
+  <div class ="item-category col-lg-2 col-md-4 col-sm-12">
+    <h3 class="head-filter">קטגוריות</h3>
+    <div *ngFor="let t of listOfTags">
+      <input type="checkbox" id="{{t.tag}}" name="{{t.tag}}" value="{{t.tag}}"
+      (change)="setTag(t.tag)">
+      <label for="{{t.tag}}">{{t.tag}}</label><br>
+    </div>
+    <h3 class="head-filter">צבעים</h3>
+    <div *ngFor="let c of listOfColors">
+      <input type="checkbox" id="{{c.color}}" name="{{c.color}}" value="{{c.color}}"
+      (change)="setColor(c.color)">
+      <label for="{{c.color}}">{{c.color}}</label><br>
+    </div>
+  </div>
+
+  <div class = "item-panel col-lg-10 col-md-8 col-sm-12">
+    <div class = "top-banner" id="gray" *ngIf="isSale">
+      <img class ="bannerImg" src="https://github.com/LiriSo/mymood/blob/master/black.png?raw=true">
+    </div>
+    <p *ngIf="products.length==0">אין פריטים בקטגוריה ובצבע הספציפיים שבחרת, נסה להרחיב את הבחירה</p>
+    <div *ngFor="let i of products" class ="item-squer col-lg-3 col-md-4 col-sm-6">
+      <div class="single-item" routerLink="/item/{{i.id}}">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+        <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+        <img class="small-item-image" (load)="showSpinner=false"
+        src="https://github.com/LiriSo/mymood/blob/master/{{i.id}}.PNG?raw=true">
+        </div>
+        <ul class="item-desc">
+          <li class="item-name"> {{i.name}} </li>
+          <li><ul class="prices">
+            <li class="item-full-price" *ngIf="i.c_price<i.f_price"> {{i.f_price | currency:'ILS'}} </li>
+            <li class="item-current-price"> {{i.c_price | currency:'ILS'}} </li>
+          </ul></li>
+        </ul>
+      </div>
+      <ul class="fav-button">
+        <li class="center" *ngIf="isFav(i)"><a class="add-fav-icon-s"
+        (click)="remove(i)"><i class="material-icons">favorite</i></a></li>
+        <li class="center" *ngIf="!isFav(i)"><a class="add-fav-icon"
+        (click)="addToFav(i)"><i class="material-icons">favorite</i></a></li>
+      </ul>
+    </div>
+  </div>
+</div>

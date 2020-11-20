@@ -1,0 +1,66 @@
+<ul id = "path" class="col-lg-12 col-md-12 col-sm-12">
+  <li><a routerLink="/">דף ראשי</a></li>
+  <li> < </li>
+  <li><a>עגלת הקניות</a></li>
+</ul>
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <div class="cart-content">
+    <h1>עגלת הקניות שלי</h1>
+    <ng-conteiner *ngIf="cartItems.length>0">
+      <ul class="head-table col-lg-12 col-md-12 col-sm-12">
+        <li></li>
+        <li></li>
+        <li>פריט</li>
+        <li>מידה</li>
+        <li>כמות</li>
+        <li>מחיר</li>
+        <li>סה"כ</li>
+      </ul>
+      <ng-conteiner *ngFor="let item of cartItems">
+        <ul class="item-in-cart col-lg-12 col-md-12 col-sm-12">
+          <li>
+              <button (click)="askToFav=true; currItem=item">מחק</button>
+              <div class="block-window-v" *ngIf="askToFav && !isFav(item.product)">
+              </div>
+              <div class = "notify-msg" *ngIf="askToFav && !isFav(item.product)">
+                <p>תרצה במקום למחוק להוסיף למועדפים כדי לזכור את הפריט יותר?</p>
+                <button class="button"  id="notify-button" (click)="addToFav(item); remove(currItem); askToFav=false" routerLink="/cart">
+                  <span>הוסף למועדפים</span></button>
+                <button class="button" id="notify-button"(click)="askToFav=false; remove(currItem)">
+                  <span>לא תודה</span></button>
+              </div>
+              <div class = "notify-msg" *ngIf="askToFav && isFav(item.product)">
+                <p>הפריט נמחק בהצלחה</p>
+                <button class="button" id="notify-button" (click)="askToFav=false; remove(currItem)">
+                  <span>סבבי</span></button>
+              </div>
+          </li>
+          <li><img class="cart-img" src="{{item.picUrl}}" routerLink="/item/{{item.product.id}}"></li>
+          <li>{{item.product.name}} {{item.product.color}}</li>
+          <li>{{item.size}}</li>
+          <li>
+            <select [(ngModel)]="item.quantity" (change)="changeQuantity(item)">
+              <option *ngFor="let i of item.availableToPurchase"
+              value="{{i}}">{{i}}</option>
+            </select>
+          </li>
+          <li>{{item.product.f_price | currency: 'ILS'}}</li>
+          <li>{{(item.product.f_price*item.quantity) | currency: 'ILS'}}</li>
+        </ul>
+
+      </ng-conteiner>
+      <ul class="sum-cart col-lg-12 col-md-12 col-sm-12">
+        <li>סה"כ {{countItems()}} מוצרים בסל</li>
+        <li>sum: {{sumItems() | currency: 'ILS'}}</li>
+        <li>discount: {{total-sumItems() | currency: 'ILS'}}</li>
+        <li>total: {{total | currency: 'ILS'}}</li>
+        <li><button class="button" routerLink="/purchase/cart">
+          <span>יאללה לקנות!</span></button></li>
+      </ul>
+    </ng-conteiner>
+    <ng-conteiner *ngIf="cartItems.length==0">
+      <h2>עגלת הקניות שלך ריקה. הוסף מוצרים!</h2>
+    </ng-conteiner>
+  </div>
+</div>

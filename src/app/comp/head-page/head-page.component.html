@@ -1,0 +1,58 @@
+<div class="always-on col-lg-12 col-md-12 col-sm-12">
+  <div class = "head" id="top">
+    <ul class="nav-left col-lg-6 col-md-6 col-sm-6">
+      <li><a routerLink="/cart"><i class="material-icons">shopping_cart</i>
+        </a></li>
+      <li id="counter">
+                <p *ngIf="cartItems>0"> {{cartItems}} </p></li>
+      <li><a routerLink="/fav"><i class="material-icons">favorite</i>
+      </a></li>
+      <li id="counter">
+              <p *ngIf="favItems>0"> {{favItems}} </p></li>
+    </ul>
+
+
+    <ul class="nav-right col-lg-6 col-md-6 col-sm-6">
+      <li><a href="">English</a></li>
+      <li><a href="">עברית</a></li>
+    </ul>
+
+  </div>
+</div>
+<div class="head-space col-lg-12 col-md-12 col-sm-12">
+  <div class="logoDiv">
+    <a routerLink="/">
+    <img class = "logo" src = "https://github.com/LiriSo/mymood/blob/master/MYMOODLOGO.png?raw=true">
+    </a>
+  </div>
+</div>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <div class="middle-site">
+      <ul class="middle-title col-lg-12 col-md-12 col-sm-12">
+        <li class="col-lg-4 col-md-4 col-sm-4"><a routerLink="/shipping-info">משלוחים</a></li>
+        <li class="col-lg-4 col-md-4 col-sm-4"><a routerLink="/purchase-discount">קופונים במתנה</a></li>
+        <li class="col-lg-4 col-md-4 col-sm-4"><a routerLink="/returns">החזרות</a></li>
+      </ul>
+  </div>
+</div>
+  <!-- <ng-conteiner  id="cart"  *ngIf="showCart">
+    <div>
+      <button (click)="showCart=false"> X </button>
+    </div>
+    <div *ngIf="cartItems.length==0">
+  no items on cart
+    </div>
+    <div *ngIf="cartItems.length>0">
+        <div class ="item-cart" *ngFor="let item of cartItems">
+          {{item.name}}
+          {{item.size}}
+          {{item.c_price | currency:'ILS'}}
+        </div>
+        <div class="total">
+          סה"כ לתשלום : {{total | currency:'ILS'}}
+          </div>
+    </div>
+
+  </ng-conteiner> -->
