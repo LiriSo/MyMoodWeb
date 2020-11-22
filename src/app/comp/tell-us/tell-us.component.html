@@ -19,7 +19,7 @@
     <div class="form-style center">
     <form class="section_form  col-lg-12 col-md-12 col-sm-12"
      #contact="ngForm" (ngSubmit)="onSubmit(contact.value)">
-      <div class = "msg " *ngIf="invalidSubmit">
+      <div class = "notify-msg" *ngIf="invalidSubmit">
         <p class = "note"> שים לב!  </p>
         <p *ngIf="userName.errors?.required">  חובה למלא שם  </p>
         <p  *ngIf="userName.errors?.minlength">  על השם להיות באורך של לפחות 2 תוים    </p>

@@ -8,7 +8,7 @@
 
 .form-style {
   justify-content: center;
-  display: flex;
+  display: relative;
 }
 
 .field-style {

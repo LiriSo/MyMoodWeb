@@ -168,6 +168,8 @@
 }
 
 
+
+
 .bannerImg {
   display: inline-block;
   width: 60%;
@@ -181,21 +183,28 @@
   margin-top: 20px;
 }
 
-.fav-button-main {
+/* .fav-button-main {
 	display: none;
 	position: absolute;
   bottom:40%;
   left:20%;
   opacity: 0.85;
+} */
+
+/* .fav-button-main-12 {
+  left: -3px;
+  bottom: 45px;
 }
 
-.fav-button-main-12 {
-  left:25%;
+.fav-button-main-9 {
+  left: -13px;
+  bottom: 50px;
 }
 
 .fav-button-main-6 {
-  left:17.5%;
-}
+  left: -28px;
+  bottom: 57px;
+} */
 
 /* @keyframes show-option-main {
 0%   {opacity: 0; bottom: 30%;}
@@ -210,4 +219,25 @@
 
 .button:hover span:after {
 	right: 105%;
+}
+
+
+.second-head {
+  height: 400px;
+  background-image: url("https://github.com/LiriSo/mymood/blob/master/wine-min.jpg?raw=true");
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  position: relative;
+}
+
+.second-head p {
+  position: absolute;
+  bottom: 20%;
+  left: 30%;
+  font-size: 40px;
+  line-height: 45px;
+    vertical-align: middle;
+    background-color: white;
+    padding: 10px;
 }

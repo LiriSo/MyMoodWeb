@@ -160,19 +160,15 @@
         <div id="more-items" class="show-more col-lg-12 col-md-12 col-sm-12">
           <drag-scroll #nav2 class="items-banner" drag-scroll-y-disabled="true" scrollbar-hidden="true">
             <div drag-scroll-item *ngFor="let i of sameTagItems" class ="item-squer">
-              <div class="single-item" routerLink="/item/{{i.id}}">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
-                <img class="small-item-image" (load)="showSpinner=false"
-                src="https://github.com/LiriSo/mymood/blob/master/{{i.id}}.PNG?raw=true">
-                </div>
-                <div class="item-desc">
-                  <p class="item-name"> {{i.name}} </p>
-                  <div class="prices">
-                    <p class="item-full-price" *ngIf="i.c_price<i.f_price"> {{i.f_price | currency:'ILS'}} </p>
-                    <p class="item-current-price"> {{i.c_price | currency:'ILS'}} </p>
-                  </div>
-                </div>
+
+              <div class="single-item" routerLink="/item/{{i.id}}"
+              style="background-image: url('https://github.com/LiriSo/mymood/blob/master/{{i.id}}.PNG?raw=true')">
+                <ul class="item-desc">
+                  <li class="item-name"> {{i.name}} </li>
+                  <li class="item-current-price"> {{i.c_price | currency:'ILS'}}</li>
+                      <!-- <p class="item-full-price" *ngIf="i.c_price<i.f_price"> {{i.f_price | currency:'ILS'}} </p> -->
+                </ul>
+
               </div>
             </div>
             <i class="material-icons" id="preBtnL" (click)="moveRight2()"> keyboard_arrow_right </i>
